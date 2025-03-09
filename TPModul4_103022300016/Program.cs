@@ -15,6 +15,26 @@ namespace TPModul4_103022300016
                 String namaKelurahan = kel.ToString();
                 Console.WriteLine($"{kel,-16} |     {KodePos.getkodePos(kel)}");
             }
+
+            Console.WriteLine("\n===================================");
+            DoorMachine door = new DoorMachine();
+
+            door.getStatusPintu();
+            String input = "";
+            while (input != "exit")
+            {
+                Console.WriteLine("Masukkan Perintah (bukaPintu/kunciPintu)");
+                input = Console.ReadLine();
+                if (Enum.TryParse(input, out kegiatan trigger))
+                {
+                    door.ubahStatePintu(trigger);
+                }
+                else
+                {
+                    Console.WriteLine("Perintah tidak valid. Coba lagi.");
+                }
+                Console.WriteLine("===================================");
+            }
         }
     }
 }
